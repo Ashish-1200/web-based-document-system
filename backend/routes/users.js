@@ -1,0 +1,10 @@
+const express = require('express')
+const router = express.Router()
+const mongoose = require ('mongoose')
+const User_model= require('../DataModels/Users.model')
+const bcrypt = require('bcrypt')
+const jwt = require('jsonwebtoken')
+const Admin_model= require('../DataModels/Admins.model')
+const UsersController = require ('../controller/users')
+const checkAuth = require ('../api/middleware/check-auth')
+
