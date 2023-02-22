@@ -1,27 +1,54 @@
-const express = require('express')
-const router = express.Router()
-const mongoose = require ('mongoose')
-const User_model= require('../DataModels/Users.model')
-const bcrypt = require('bcrypt')
-const jwt = require('jsonwebtoken')
-const Admin_model= require('../DataModels/Admins.model')
-const UsersController = require ('../controller/users')
-const checkAuth = require ('../api/middleware/check-auth')
+const express = require('express');
+const router = express.Router();
+const mongoose = require('mongoose');
+const IncidentReport = require('../DataModels/IncidentReport.model');
+const checkAuth = require('../api/middleware/check-auth');
+const incidentReportController = require('../controller/incidentReport');
 
+const multer = require('multer');
 
+const storage = multer.diskStorage({
+  destination: function(req, file, cb) {
+    cb(null, './uploads/');
+  },
+  filename: function(req, file, cb) {
+    cb(null, file.originalname);
+  }
+});
 
+const fileFilter = (req, file, cb) => {
+  if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
+    cb(null, true);
+  } else {
+    cb(null, false);
+  }
+};
 
-router.get('/list',UsersController.users_get_list );
+const upload = multer({
+  storage: storage,
+  limits: {
+    fileSize: 1024 * 1024 * 5
+  },
+  fileFilter: fileFilter
+});
 
-router.get ('/userchart',UsersController.getuserschart)
+router.get('/list', incidentReportController.incidentReport_get_list);
 
+router.get('/chart', (req, res, next) => {
+  IncidentReport.find({})
+    .then(docs => {
+      console.log(docs);
+      res.status(200).json(docs);
+    })
+    .catch((error) => console.log(error))
+});
 
-router.get("/:id",UsersController.users_get_one);  //Find user based on ID
+router.get('/:id', incidentReportController.incidentReport_get_one);
 
+router.post('/create', upload.single('image'), incidentReportController.incidentReport_post_create);
 
-router.post('/signup',UsersController.users_signup); //Registration 
+router.put('/:id', incidentReportController.incidentReport_put_update);
 
+router.delete('/:id', checkAuth, incidentReportController.incidentReport_delete_one);
 
-router.post('/login',UsersController.users_login) //User login
-
-
+module.exports = router;

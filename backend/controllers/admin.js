@@ -4,6 +4,7 @@ const mongoose = require ('mongoose')
 const admin_model= require('../DataModels/Admins.model');
 const mongoose = require ('mongoose')
 
+
 exports.get_all_admins = function(req, res, next) {
 admin_model.find(function(error, admins){
 if(error) {
@@ -24,6 +25,7 @@ UserID: mongoose.Types.ObjectId(req.user_id)
 });
 
 
+
 newAdmin.save(function(error, createdAdmin){
     if(error) {
         res.send(error);
@@ -36,6 +38,8 @@ newAdmin.save(function(error, createdAdmin){
 });
 };
 
+
+
 exports.getOneAdmin = function(req, res) {
 admin_model.findOne({_id: req.params.id})
 .populate("UserID")
@@ -46,6 +50,34 @@ res.send(adminData);
 res.send("Admin not found");
 });
 };
+
+
+
+exports.admin_put_update = function(req, res, next) {
+    const id = req.params.id;
+    const updateOps = {};
+    for (const ops of req.body) {
+        updateOps[ops.propName] = ops.value;
+    }
+    admin_model.update({ _id: id }, { $set: updateOps })
+        .exec()
+        .then(result => {
+            console.log(result);
+            res.status(200).json({
+                message: "Admin updated"
+            });
+        })
+        .catch(error => {
+            console.log(error);
+            res.status(500).json({
+                error: error
+            });
+        });
+};
+
+
+
+
 
 exports.removeAdmin = function(req, res, next) {
 admin_model.deleteOne({_id: req.params.userId})
