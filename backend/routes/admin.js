@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
-const admin = require('../DataModels/Admin.model');
+const admin = require('../DataModels/admin.model');
 const adminController = require('../controller/admin');
 
 router.get('/list', adminController.getAllAdmins);   //retrieves a list of all admin users
