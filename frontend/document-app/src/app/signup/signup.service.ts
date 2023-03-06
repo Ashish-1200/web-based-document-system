@@ -14,7 +14,7 @@ export class SignupService {
     addUserForm(data: any) {
       console.log(data);
       this.router.navigate(['/login']);
-      return this.http.post('http://localhost:3000/api/users/signup', data);
+      return this.http.post('http://localhost:4200/signup', data);
     }
   
     validateUsernameNotTaken(control: AbstractControl) {
@@ -24,7 +24,7 @@ export class SignupService {
     }
   
     checkUsernameNotTaken(username: string) {
-      return this.http.get<Array<any>>('http://localhost:3000/api/users/list')
+      return this.http.get<Array<any>>('http://localhost:4200/api/users/list')
         .pipe(
           map(users => users.filter(user => user.username === username)),
           map(users => !users.length)
@@ -38,7 +38,7 @@ export class SignupService {
     }
   
     checkEmailNotTaken(email: string) {
-      return this.http.get<Array<any>>('http://localhost:3000/api/users/list')
+      return this.http.get<Array<any>>('http://localhost:4200/api/users/list')
         .pipe(
           map(users => users.filter(user => user.email === email)),
           map(users => !users.length)

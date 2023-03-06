@@ -9,7 +9,13 @@ export class AppComponent {
   title = 'web-based-document-system';
   sideBarOpen = true;
 
+
   sideBarToggler() {
     this.sideBarOpen = !this.sideBarOpen;
   }
-}
+  onButtonClick() {
+    console.log('Button clicked');
+  }
+  }
+
+  
