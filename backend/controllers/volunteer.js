@@ -1,5 +1,5 @@
 const mongoose = require ('mongoose')
-const  volunteer= require('../DataModels/Volunteer.model')
+const  volunteer= require('../models/volunteer.m')
 
 exports.volunteer_retrieve = (req, res, next) => {
     Volunteer_model.find()

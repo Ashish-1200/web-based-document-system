@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const multer = require('multer');
 const PoliciesController = require('../controller/policies');
-const policies = require('../DataModels/policies.model');
+const policies = require('../model/policies.m');
 
 const storage = multer.diskStorage({
   destination: function(req, file, cb) {
@@ -35,4 +35,4 @@ router.post('/', upload.single('policiesDocument'), PoliciesController.createpol
 router.patch('/:id', upload.single('policiesDocument'), PoliciesController.updatepolicies);
 router.delete('/:id', PoliciesController.deletepolicies);
 
-module.exports = router;
+module.exports = router

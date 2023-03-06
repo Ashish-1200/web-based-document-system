@@ -1,0 +1,28 @@
+.card {
+    width: 50%;
+    height: 560px;
+    background-color: #bf5454;
+    margin: auto;
+  }
+  
+  .form-control,
+  textarea {
+    width: 100%;
+  }
+  
+  .btn {
+    margin-top: 10px;
+    width: 100%;
+    color: white;
+    height: 40px;
+    background-color: #3F51B5;
+  }
+  
+  .card-title {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 30px;
+    font-weight: 550;
+    border-bottom: 1px solid black;
+    margin-bottom: 50px;
+    padding-bottom: 14px;
+  }

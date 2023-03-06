@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const financialReports = require('../DataModels/FinancialReports.model');
+const financialReports = require('../models/financialreports.m');
 
 exports.getAllFinancialReports = (req, res) => {
   financialReports.find({})

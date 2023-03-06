@@ -1,5 +1,5 @@
 const mongoose = require ('mongoose')
-const EventModel = require('../DataModels/Event.model')
+const event = require('../models/event.m')
 
 exports.getEventList = function(req, res, next) {
 EventModel.find(function(error, eventList) {

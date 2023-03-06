@@ -1,8 +1,8 @@
 const express = require('express')
 const router = express.Router()
 const mongoose = require('mongoose')
-const EquipmentInventoryController = require('../controller/equipment_inventory')
-const Equipment = require('../DataModels/Equipment.model')
+const EquipmentInventoryController = require('../controller/equipmentinventory')
+const EquipmentInventory = require('../models/equipment.m')
 const multer = require('multer')
 
 // Multer middleware configuration

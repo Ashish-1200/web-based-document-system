@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const IntendedProject = require('../DataModels/IntendedProject.model');
+const IntendedProject = require('../models/intendedproject.m');
 
 exports.getIntendedProjects = (req, res, next) => {
   IntendedProject.find((err, intendedProjects) => {

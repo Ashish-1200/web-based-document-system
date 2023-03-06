@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const EquipmentInventory = require('../DataModels/EquipmentInventory.model');
+const EquipmentInventory = require('../models/equipmentinventory.m');
 
 exports.equipmentInventory_list = function(req, res, next) {
 EquipmentInventory.find(function(err, equipmentInventoryResponse) {

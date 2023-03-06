@@ -1,5 +1,5 @@
 const mongoose = require ('mongoose');
-const insuranceReports = require('../DataModels/InsuranceReports.model');
+const insuranceReports = require('../models/insurancereports.m');
 
 exports.getInsuranceReports = (req, res, next) => {
 insuranceReports.find((err, insuranceReportsList) => {

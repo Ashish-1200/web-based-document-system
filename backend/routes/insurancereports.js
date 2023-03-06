@@ -3,7 +3,7 @@ const router = express.Router();
 const multer = require('multer');
 const mongoose = require('mongoose')
 const InsuranceController = require('../controllers/insurance');
-const IncidentReport = require('../models/insurancereport');
+const d_insurancereports = require('../models/insurancereport');
 
 // Multer middleware for file upload
 const storage = multer.diskStorage({
@@ -44,4 +44,4 @@ router.put('/:id', upload.single('file'), InsuranceController.updateInsuranceRep
 // Delete an insurance report by ID
 router.delete('/:id', InsuranceController.deleteInsuranceReport);
 
-module.exports = router;
+module.exports = router

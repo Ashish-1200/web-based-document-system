@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const IncidentReport = require('../DataModels/IncidentReport.model');
+const IncidentReport = require('../models/incidentreport.m');
 
 exports.incidentreport_list = function(req, res, next) {   //gets a list of all the documents in incident report 
   IncidentReport.find(function(err, incidentReports) {

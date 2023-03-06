@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Policy = require('../DataModels/Policy.model');
+const Policy = require('../models/policies.m');
 
 exports.getAllPolicies = (req, res) => {
   Policy.find({})

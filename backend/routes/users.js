@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
-const IncidentReport = require('../DataModels/IncidentReport.model');
+const d_users = require ("./models/users.m");
 const checkAuth = require('../api/middleware/check-auth');
 const incidentReportController = require('../controller/incidentReport');
 
@@ -51,4 +51,4 @@ router.put('/:id', incidentReportController.incidentReport_put_update);
 
 router.delete('/:id', checkAuth, incidentReportController.incidentReport_delete_one);
 
-module.exports = router;
+module.exports = router

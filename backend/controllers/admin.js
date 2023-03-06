@@ -1,12 +1,11 @@
-const admin_model= require('../DataModels/Admins.model');
+const admin_m= require('../models/admin.m');
 const mongoose = require ('mongoose')
 
-const admin_model= require('../DataModels/Admins.model');
 const mongoose = require ('mongoose')
 
 
 exports.get_all_admins = function(req, res, next) {
-admin_model.find(function(error, admins){
+admin_m.find(function(error, admins){
 if(error) {
 res.send(error);
 } else {
@@ -19,7 +18,7 @@ AdminDetails: admins
 };
 
 exports.createAdmin = function(req, res, next) {
-const newAdmin = new admin_model({
+const newAdmin = new admin_m({
 _id: mongoose.Types.ObjectId(),
 UserID: mongoose.Types.ObjectId(req.user_id)
 });
@@ -41,7 +40,7 @@ newAdmin.save(function(error, createdAdmin){
 
 
 exports.getOneAdmin = function(req, res) {
-admin_model.findOne({_id: req.params.id})
+admin_m.findOne({_id: req.params.id})
 .populate("UserID")
 .then(function(adminData){
 res.send(adminData);
@@ -59,7 +58,7 @@ exports.admin_put_update = function(req, res, next) {
     for (const ops of req.body) {
         updateOps[ops.propName] = ops.value;
     }
-    admin_model.update({ _id: id }, { $set: updateOps })
+    admin_m.update({ _id: id }, { $set: updateOps })
         .exec()
         .then(result => {
             console.log(result);
@@ -80,7 +79,7 @@ exports.admin_put_update = function(req, res, next) {
 
 
 exports.removeAdmin = function(req, res, next) {
-admin_model.deleteOne({_id: req.params.userId})
+admin_m.deleteOne({_id: req.params.userId})
 .exec()
 .then(result => {
 console.log(result);

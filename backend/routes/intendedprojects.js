@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const IntendedProjectController = require('../controller/intended_projects');
 const multer = require('multer');
-const IncidentReport = require('../models/intendedprojects');
+const IncidentReport = require('../models/intendedprojects.m');
 
 // Set up multer middleware for file uploads
 const storage = multer.diskStorage({

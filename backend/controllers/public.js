@@ -1,5 +1,5 @@
 const mongoose = require ('mongoose')
-const  public= require('../DataModels/Public.model')
+const  public= require('../models/public.m')
 
 exports.getPublicList = function(req, res, next) {
     public.find(function(err, publicList){

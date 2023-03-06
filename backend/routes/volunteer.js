@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const mongoose = require('mongoose')
-const Volunteer = require('../DataModels/Volunteer.model')
+const d_volunteer = require('../models/volunteer.m')
 const VolunteerController = require('../controller/volunteer')
 
 router.route('/')
