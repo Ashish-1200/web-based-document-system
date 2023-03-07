@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { SignupService } from './signup.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-signup',
@@ -21,7 +22,7 @@ export class SignupComponent implements OnInit {
     Requestedrole: new FormControl('', Validators.required)
   });
 
-  constructor(public signupService: SignupService) {}
+  constructor(public signupService: SignupService, private http: HttpClient) {}
 
   SaveData() {
     if (this.form.invalid) return;

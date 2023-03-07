@@ -19,7 +19,8 @@
               <option value="MOW">MOW user</option>
               <option value="USMO">USMO User</option>
           </select>
-          <div class="invalid-feedback" *ngIf="loginForm.controls['userClass'].invalid">Please enter a valid Userclass.</div>
+          <div class="invalid-feedback" *ngIf="loginForm.controls['userClass']?.invalid">Please enter a valid Userclass.</div>
+
         </div>
         <div class="form-group">
           <label for="username">Username</label>
