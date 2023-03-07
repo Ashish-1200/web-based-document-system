@@ -13,7 +13,7 @@ import { MatIconModule } from '@angular/material/icon';
 import {MatSortModule} from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { UsersComponent } from './users/users.component';
+
 
 
 @NgModule({
@@ -21,8 +21,8 @@ import { UsersComponent } from './users/users.component';
     AppComponent,
     MainpageComponent,
     LoginComponent,
-    SignupComponent,
-    UsersComponent
+    SignupComponent
+    
     
     
   ],
