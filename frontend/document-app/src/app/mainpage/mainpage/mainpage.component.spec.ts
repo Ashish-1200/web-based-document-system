@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { MainpageComponent } from './mainpage.component';
 
 describe('MainpageComponent', () => {
@@ -9,9 +8,10 @@ describe('MainpageComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ MainpageComponent ]
-    })
-    .compileComponents();
+    }).compileComponents();
+  });
 
+  beforeEach(() => {
     fixture = TestBed.createComponent(MainpageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -21,3 +21,4 @@ describe('MainpageComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+

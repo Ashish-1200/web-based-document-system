@@ -1,1 +1,12 @@
-<p>mainpage works!</p>
+<div  *ngIf="!isLogged">
+  <section class="home">
+    <img src="../../assets/emss.jpg">
+    <div class="homecontent">
+      <h1>Web-based_Document_system</h1>
+      <div>
+        <button mat-raised-button routerLink="/signup">Register to your agency</button>
+      </div>
+    </div>
+  </section>
+</div>
+

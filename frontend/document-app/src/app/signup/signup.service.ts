@@ -8,6 +8,9 @@ import { Injectable } from '@angular/core';
 
 
 export class SignupService {
+    matchPasswords(arg0: string, arg1: string): any {
+      throw new Error('Method not implemented.');
+    }
 
     constructor(private http: HttpClient, private router: Router) { }
   

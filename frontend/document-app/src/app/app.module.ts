@@ -6,20 +6,36 @@ import { LoginComponent } from './login/login.component';
 import { MainpageComponent } from './mainpage/mainpage/mainpage.component';
 import { SignupComponent } from './signup/signup.component';
 
-import { ReactiveFormsModule } from '@angular/forms';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+
+import {MatSortModule} from '@angular/material/sort';
+import { MatTableModule } from '@angular/material/table';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { UsersComponent } from './users/users.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     MainpageComponent,
+    LoginComponent,
     SignupComponent,
-    LoginComponent
+    UsersComponent
+    
     
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule,
+    MatTableModule,
+    MatSortModule,
+    MatSnackBarModule,
+    MatIconModule,
+    MatFormFieldModule
   
   ],
   providers: [],
