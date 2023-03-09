@@ -2,8 +2,9 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Router } from '@angular/router';
 import { loginData } from "./login.model";
-import { Subject } from "rxjs";
+
 import { MatSnackBar } from "@angular/material/snack-bar";
+import { Subject } from "rxjs";
 
 @Injectable({ providedIn: "root" })
 export class LoginService {
@@ -11,12 +12,20 @@ export class LoginService {
   private authStatusListener = new Subject<boolean>();
   isAuthenticated: boolean | undefined;
   tokenresp: any;
+  private _updatemenu= new Subject<void>();
+
 
   constructor(private http: HttpClient, private router: Router, private _snackBar: MatSnackBar) { }
 
+  get updatemenu(){
+    return this._updatemenu;
+  }
+  
+
+
   loginUser(Username: string, Password: string, Userclass: string) {
     const LoginData: loginData = { Username: Username, Password: Password, UserType: Userclass }
-    this.http.post<{ token: string }>("http://localhost:3000/api/users/login", LoginData)
+    this.http.post<{ token: string }>("http://localhost:4200/api/users/login", LoginData)
       .subscribe(response => {
         const token = response.token;
         this.token = token;
@@ -32,8 +41,10 @@ export class LoginService {
       });
   }
 
-  getauthStatusListener() {
+  
+  getauthStatusListener(){
     return this.authStatusListener.asObservable();
+
   }
 
   getToken() {

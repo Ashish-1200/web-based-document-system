@@ -12,11 +12,15 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 
+import { MatPaginatorModule } from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginService } from './login/login.service';
 import { SignupService } from './signup/signup.service';
+import { UsersComponent } from './users/users.component';
+import { UsersService } from './users/users.service';
+import { HomepageComponent } from './homepage/homepage.component';
 
 
 
@@ -25,7 +29,9 @@ import { SignupService } from './signup/signup.service';
     AppComponent,
     MainpageComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    UsersComponent,
+    HomepageComponent
     
     
     
@@ -40,10 +46,11 @@ import { SignupService } from './signup/signup.service';
     MatSnackBarModule,
     MatIconModule,
     MatFormFieldModule,
-  HttpClientModule
+  HttpClientModule,
+  MatPaginatorModule
   
   ],
-  providers: [LoginService, SignupService],
+  providers: [LoginService, SignupService, UsersService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

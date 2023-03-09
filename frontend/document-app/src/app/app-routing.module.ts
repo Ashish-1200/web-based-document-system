@@ -12,9 +12,7 @@ const routes: Routes = [
  {path:'login',component:LoginComponent},
  {path:"map",component:MainpageComponent},
  {path:"reactiveforms",component:ReactiveFormsModule},
- 
- 
-
+ {path:'mainpage',component:MainpageComponent},
 
 ];
 
@@ -26,4 +24,7 @@ export class AppRoutingModule {
   static forRoot(): any[] | import("@angular/core").Type<any> | import("@angular/core").ModuleWithProviders<{}> {
     throw new Error('Method not implemented.');
   }
+
+
+  
 }

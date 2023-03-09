@@ -1,40 +1,92 @@
-.home img{
-    width:100%;
-    height: 700px;
-    object-position: center;
-    object-fit: cover;
+/* Frame 15 */
+.frame-15 {
+  position: relative;
+  width: 1920px;
+  height: 1080px;
+  background: #7CEE88;
+}
+
+/* world image 1 
+.world-image-1 {
+  position: absolute;
+  width: 561px;
+  height: 560px;
+  left: 16px;
+  top: 19px;
+  background: url('../assets/worldimage1.png');
+
   
-  }
-  
-  .homecontent{
-    position:absolute;
-    top:45%;
-    left:80%;
-    transform: translate(-50%,-140%);
-  
-  
-  }
-  .homecontent h1{
-    color: white;
-    font-size:80px;
-  }
-  .homecontent button{
-    position:absolute;
-    bottom:80%;
-    left:50%;
-    transform: translate(-50%,900%);
-    width: 50%;
-    height: 40px;
-    font-size:16px;
-  
-  }
-  
-  .homecontent button:hover {
-  
-    color:#e6e9ff;
-    background-color: rgb(238, 40, 40);
-    cursor: pointer;
-    transition-duration: 0.4s;
-    text-decoration: none;
-  
-  }
+}
+*/
+/* Web-based Document Management System */
+.document-management-system {
+  position: absolute;
+  width: 1072px;
+  height: 355px;
+  left: 735px;
+  top: 49px;
+  font-family: 'Inter';
+  font-style: italic;
+  font-weight: 800;
+  font-size: 96px;
+  line-height: 116px;
+  color: #000000;
+}
+
+/* Rectangle 1 */
+.rectangle-1 {
+  position: absolute;
+  visibility: hidden;
+  width: 170px;
+  height: 163px;
+  left: 73px;
+  top: 810px;
+  background: rgba(116, 116, 116, 0.2);
+}
+
+/* Title */
+.title {
+  position: absolute;
+  width: 1142px;
+  height: 237px;
+  left: 682px;
+  top: 49px;
+  background: rgba(247, 247, 247, 0.32);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+/* Log in box */
+.login-box {
+  position: absolute;
+  visibility: hidden;
+  width: 859px;
+  height: 374px;
+  left: 784px;
+  top: 611px;
+  background: rgba(0, 0, 0, 0.04);
+}
+
+/* USER LOGIN  */
+.user-login {
+  position: absolute;
+  width: 261px;
+  height: 58px;
+  left: 1100px;
+  top: 422px;
+  font-family: 'Inter';
+  font-style: italic;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 44px;
+  border: 1px solid #000000;
+}
+
+/* Rectangle 2 */
+.rectangle-2 {
+  position: absolute;
+  width: 859px;
+  height: 76px;
+  left: 801px;
+  top: 404px;
+  background: rgba(255, 255, 255, 0.34);
+}
