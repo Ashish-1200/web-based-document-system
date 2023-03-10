@@ -1,54 +1,35 @@
 const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
-const d_users = require ("./models/users.m");
-const checkAuth = require('../api/middleware/check-auth');
-const incidentReportController = require('../controller/incidentReport');
+const d_users = require('../models/users.m');
+const authcheck = require('../middleware/authcheck');
+const UsersController = require('../controllers/Users');
 
-const multer = require('multer');
 
-const storage = multer.diskStorage({
-  destination: function(req, file, cb) {
-    cb(null, './uploads/');
-  },
-  filename: function(req, file, cb) {
-    cb(null, file.originalname);
-  }
-});
 
-const fileFilter = (req, file, cb) => {
-  if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
-    cb(null, true);
-  } else {
-    cb(null, false);
-  }
-};
 
-const upload = multer({
-  storage: storage,
-  limits: {
-    fileSize: 1024 * 1024 * 5
-  },
-  fileFilter: fileFilter
-});
 
-router.get('/list', incidentReportController.incidentReport_get_list);
+router.get('/list', UsersController.users_get);
 
-router.get('/chart', (req, res, next) => {
-  IncidentReport.find({})
-    .then(docs => {
-      console.log(docs);
-      res.status(200).json(docs);
-    })
-    .catch((error) => console.log(error))
-});
 
-router.get('/:id', incidentReportController.incidentReport_get_one);
+router.get('/:id', UsersController.users_eachone);
 
-router.post('/create', upload.single('image'), incidentReportController.incidentReport_post_create);
+//Registration
+router.post('/signup',UsersController.users_signup);
 
-router.put('/:id', incidentReportController.incidentReport_put_update);
+//User Login
+router.post('/login',UsersController.users_login)
 
-router.delete('/:id', checkAuth, incidentReportController.incidentReport_delete_one);
 
-module.exports = router
+router.put('/:id', UsersController.update_user);
+
+router.delete('/:id', authcheck, UsersController.delete_user);
+
+
+
+//Delete User
+router.delete('/:userId',UsersController.delete_user);
+
+
+module.exports = router;
+

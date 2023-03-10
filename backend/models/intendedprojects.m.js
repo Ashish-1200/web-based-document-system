@@ -1,34 +1,35 @@
 const mongoose = require("mongoose");
-const intendedprojectsSchema = new mongoose.Schema({
+
+const IntendedProjectsSchema = mongoose.Schema({
   _id: mongoose.Schema.Types.ObjectId,
   adminID: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "admins",
   },
-  publicID: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "public",
-  },
-  projectDescription: {
+  ProjectTitle: {
     type: String,
     required: true,
   },
-  startDate: {
-    type: Date,
+  ProjectDescription: {
+    type: String,
     required: true,
   },
-  finishDate: {
-    type: Date,
-    required: true,
-  },
-  personnelRequired: {
-    type:string,
-    required: true,
-  },
-  costRequired: {
+  ProjectBudget: {
     type: Number,
+    required: true,
+  },
+  ProjectStartDate: {
+    type: Date,
+    required: true,
+  },
+  ProjectEndDate: {
+    type: Date,
+    required: true,
+  },
+  ProjectStatus: {
+    type: String,
     required: true,
   },
 });
 
-module.exports = mongoose.model("intendedprojects", intendedprojectsSchema);
+module.exports = mongoose.model("intendedprojects", IntendedProjectsSchema);

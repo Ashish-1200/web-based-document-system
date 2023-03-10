@@ -29,10 +29,10 @@ const upload = multer({
   fileFilter: fileFilter
 });
 
-router.get('/', PoliciesController.getPolicies);
-router.get('/:id', PoliciesController.getpolicies);
-router.post('/', upload.single('policiesDocument'), PoliciesController.createpolicies);
-router.patch('/:id', upload.single('policiesDocument'), PoliciesController.updatepolicies);
-router.delete('/:id', PoliciesController.deletepolicies);
+router.get('/', PoliciesController.getAllPolicies);
+router.get('/:id', PoliciesController.getPolicy);
+router.post('/', upload.single('policiesDocument'), PoliciesController.createPolicy);
+router.patch('/:id', upload.single('policiesDocument'), PoliciesController.updatePolicy);
+router.delete('/:id', PoliciesController.deletePolicy);
 
 module.exports = router

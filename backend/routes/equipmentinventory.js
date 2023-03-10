@@ -1,8 +1,8 @@
 const express = require('express')
 const router = express.Router()
 const mongoose = require('mongoose')
-const EquipmentInventoryController = require('../controller/equipmentinventory')
-const EquipmentInventory = require('../models/equipment.m')
+const EquipmentInventoryController = require('../controllers/Equipmentinventory')
+const EquipmentInventory = require('../models/equipmentinventory.m')
 const multer = require('multer')
 
 // Multer middleware configuration
@@ -33,18 +33,18 @@ const upload = multer({
 })
 
 // Get list of equipment
-router.get('/list', EquipmentInventoryController.equipment_list)
+router.get('/list', EquipmentInventoryController.equipmentInventory_list)
 
 // Get a specific equipment information
-router.get('/:id', EquipmentInventoryController.equipment_get_one)
+router.get('/:id', EquipmentInventoryController.equipmentInventory_get_one)
 
 // Create a new equipment
-router.post('/create', upload.single('equipmentImage'), EquipmentInventoryController.equipment_create)
+router.post('/create', upload.single('equipmentImage'), EquipmentInventoryController.equipmentInventory_create)
 
 // Update an existing equipment
-router.put('/:id', EquipmentInventoryController.equipment_update)
+router.put('/:id', EquipmentInventoryController.equipmentInventory_update)
 
 // Delete an equipment
-router.delete('/:id', EquipmentInventoryController.equipment_delete)
+router.delete('/:id', EquipmentInventoryController.equipmentInventory_delete_one)
 
 module.exports = router

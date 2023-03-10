@@ -32,7 +32,10 @@
           <input class="form-control" id="password" name="password" ngModel type="password" placeholder="Password" required>
           <div class="invalid-feedback" *ngIf="loginForm.controls['password'].invalid">Please enter a valid Password.</div>
         </div>
-        <button class="btn btn-primary" type="submit">Login</button>
+        <a routerLink="/homepage" class="btn btn-primary" type="submit">Login</a>
+
+      
+
       </form>
     </div>
   </div>

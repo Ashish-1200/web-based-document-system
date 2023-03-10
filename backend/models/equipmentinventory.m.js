@@ -29,7 +29,7 @@ required: true
 },
 
 SerialNo: {
-type: number,
+type: Number,
 required: true
 },
 

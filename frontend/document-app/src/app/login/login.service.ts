@@ -25,7 +25,7 @@ export class LoginService {
 
   loginUser(Username: string, Password: string, Userclass: string) {
     const LoginData: loginData = { Username: Username, Password: Password, UserType: Userclass }
-    this.http.post<{ token: string }>("http://localhost:4200/api/users/login", LoginData)
+    this.http.post<{ token: string }>("http://localhost:3000/api/users/login", LoginData)
       .subscribe(response => {
         const token = response.token;
         this.token = token;

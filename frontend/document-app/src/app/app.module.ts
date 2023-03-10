@@ -22,6 +22,14 @@ import { UsersComponent } from './users/users.component';
 import { UsersService } from './users/users.service';
 import { HomepageComponent } from './homepage/homepage.component';
 
+import { EquipmentinventoryComponent } from './equipmentinventory/equipmentinventory.component';
+import { EventComponent } from './event/event.component';
+import { FinincialreportsComponent } from './finincialreports/finincialreports.component';
+import { InsurancereportsComponent } from './insurancereports/insurancereports.component';
+import { IntendedprojectsComponent } from './intendedprojects/intendedprojects.component';
+import { PoliciesComponent } from './policies/policies.component';
+import { IncidentreportsComponent } from './incidentreports/incidentreports.component';
+
 
 
 @NgModule({
@@ -31,7 +39,14 @@ import { HomepageComponent } from './homepage/homepage.component';
     LoginComponent,
     SignupComponent,
     UsersComponent,
-    HomepageComponent
+    HomepageComponent,
+    IncidentreportsComponent,
+    EquipmentinventoryComponent,
+    EventComponent,
+    FinincialreportsComponent,
+    InsurancereportsComponent,
+    IntendedprojectsComponent,
+    PoliciesComponent
     
     
     

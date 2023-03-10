@@ -4,6 +4,7 @@ import { LoginComponent } from './login/login.component';
 import { MainpageComponent } from './mainpage/mainpage/mainpage.component';
 import { SignupComponent } from './signup/signup.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HomepageComponent } from './homepage/homepage.component';
 
 
 const routes: Routes = [
@@ -13,6 +14,7 @@ const routes: Routes = [
  {path:"map",component:MainpageComponent},
  {path:"reactiveforms",component:ReactiveFormsModule},
  {path:'mainpage',component:MainpageComponent},
+ {path:'homepage',component:HomepageComponent},
 
 ];
 

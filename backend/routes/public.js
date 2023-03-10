@@ -1,19 +1,19 @@
-onst express = require('express');
+const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
 const d_public = require('../models/public.m');
 const PublicController = require('../controller/public');
 
 // Get Public list
-router.get('/list', PublicController.public_get_list);
+router.get('/list', PublicController.getPublicList);
 
 // Create new public user
-router.post('/create', PublicController.public_post_create);
+router.post('/create', createPublic);
 
 //Retrieve a specific Public record
-router.get('/:id', PublicController.public_get_one);
+router.get('/:id', PublicController.getOnePublic);
 
 // Delete a public user
-router.delete('/:publicId', PublicController.public_delete_one);
+router.delete('/:publicId', PublicController.deletePublic);
 
 module.exports = router

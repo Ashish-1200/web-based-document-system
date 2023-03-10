@@ -39,5 +39,7 @@ router.post('/', upload.array('images', 5), IncidentReportController.createRepor
 router.get('/:reportId', IncidentReportController.getReportById);
 router.put('/:reportId', IncidentReportController.updateReport);
 router.delete('/:reportId', IncidentReportController.deleteReport);    // Delete reports
+//Creating  a new document within the collection
+router.post('/create',IncidentReportController.createReport);
 
-module.exports = router
+module.exports = router;

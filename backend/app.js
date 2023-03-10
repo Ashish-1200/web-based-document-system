@@ -3,25 +3,35 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const cors = require ('cors');
 const path = require ('path');
-
+mongoose.set('strictQuery', false );
 const app = express();
 
-app.listen(3000,(error)=>console.log(error));
+//app.listen(3000,(error)=>console.log(error));
+
 
 
 //sets up the middleware to parse incoming request bodies in JSON format
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-
+//Used to log requests
+const morgan = require('morgan');
+app.use(morgan('dev'));
 
 //Cross-Origin Resource Sharing (CORS) middleware
 app.use(cors())
 
-// connection to the MongoDB database
-mongoose.connect("mongodb://localhost/docsysten"),()=>{
-    console.log("Database Connected")                     // log a message in the console when the connection to the database is established successfully
-},
+//Connection to database
+mongoose.Promise = global.Promise;
+mongoose.connect('mongodb://localhost:27017/docsystem')
+.then(() => console.log("Database is connected"))
+.catch((error) => console.log(error));
+
+//app.use(bodyParser.json()); 
+// allow application to use json data
+app.use(express.json()); 
+
+
 //serve the static files located in the "images" and "uploads" directories
 app.use('/images', express.static('images'));
 app.use('/uploads',express.static('uploads'));
@@ -42,17 +52,17 @@ const volunteer = require("./models/volunteer.m");
 
 
 //Routes
-const d_users = require('./Routes/users');
+/*const d_users = require('./Routes/users');
 const d_admin = require('./Routes/admin');
 const d_equipmentinventory = require('./Routes/equipmentinventory');
 const d_event = require('./Routes/event');
-const d_financialReport = require('./Routes/financialreport');
-const d_incidentReport = require('./Routes/incidentreport');
-const d_insuranceReports = require('./Routes/insurancereports');
-const d_intendedProjects = require('./Routes/intendedprojects');
+const d_financialreport = require('./Routes/financialreport');
+const d_incidentreport = require('./Routes/incidentreport');
+const d_insurancereports = require('./Routes/insurancereports');
+const d_intendedprojects = require('./Routes/intendedprojects');
 const d_policies = require('./Routes/policies');
 const d_public = require('./Routes/public');
-const d_volunteer = require('./Routes/volunteer');
+const d_volunteer = require('./Routes/volunteer');     */
 
 app.use('/users', users);
 app.use('/admin', admin);
@@ -69,27 +79,42 @@ app.use('/volunteer', volunteer);
 
 //request is made to a route that does not exist
 app.use((req,res,next)=>{
-    const error = new Error ('Not found');
-    error.status=404;
-    next(error);
+  const error = new Error ('Not found');
+  error.status=404;
+  next(error);
 })
 
 //allows requests from any origin, sets the allowed headers, and specifies the allowed methods for HTTP requests
-app.use((req, res, next) => {
-    res.set({
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, Authorization",
-      "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS"
-    });
-    next();
-  });
+// Cross Origin Request Security
+app.use((req,res,next) => {
+  res.header("Access-Control-Allow-Origin", "*"); // gives access to all clients
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization"); // allow headers
+  if (req.method === 'OPTIONS'){
+      res.header("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE"); // allow these method to access API
+      return res.status(200).json({});
+  }
+  next();
+});
 
+app.use(morgan('dev'));
 
   app.use((req, res, next) => {
     const error = new Error('Not found');
     error.status = 404;
     next(error);
   });
+  app.use((error,req,res,next) => {
+    res.status(error.status || 500);
+    res.json({
+        error: {
+            message: error.message
+        }
+    });
+});
 
+   //Listens for request
+app.listen(3000,function(){
+  console.log('Server is connected! Listening for requests');
+});
 
   module.exports = app;

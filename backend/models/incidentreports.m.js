@@ -3,20 +3,6 @@ const incidentreportsSchema = new mongoose.Schema({
 
 _id: mongoose.Schema.Types.ObjectId,
 
-adminID: {
-type: mongoose.SchemaTypes.ObjectId,
-ref: "admins"
-},
-
-volunteerID: {
-type: mongoose.SchemaTypes.ObjectId,
-ref: "volunteers"
-},
-
-publicID: {
-type: mongoose.SchemaTypes.ObjectId,
-ref: "public"
-},
 
 firstName: {
 type: String,
@@ -44,7 +30,7 @@ required: true
 },
 
 dateOfIncident: {
-type: Date,
+type: String,
 required: true
 },
 

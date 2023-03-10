@@ -1,7 +1,7 @@
 const admin_m= require('../models/admin.m');
 const mongoose = require ('mongoose')
 
-const mongoose = require ('mongoose')
+
 
 
 exports.get_all_admins = function(req, res, next) {

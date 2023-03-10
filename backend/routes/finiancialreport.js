@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const multer = require('multer');
-const FinancialReportController = require('../controller/financial_report');
+const FinancialReportController = require('../controllers/Financialreports');
 const financialReport = require('../model/financialreports.m');
 
 const storage = multer.diskStorage({
@@ -29,8 +29,8 @@ const upload = multer({
   fileFilter: fileFilter
 });
 
-router.get('/', FinancialReportController.getFinancialReport);
-router.get('/:id', FinancialReportController.getFinancialReport);
+router.get('/', FinancialReportController.getAllFinancialReports);
+router.get('/:id', FinancialReportController.getSingleFinancialReport);
 router.post('/', upload.single('financialReport'), FinancialReportController.createFinancialReport);
 router.patch('/:id', upload.single('financialReport'), FinancialReportController.updateFinancialReport);
 router.delete('/:id', FinancialReportController.deleteFinancialReport);
