@@ -41,7 +41,7 @@ exports.volunteer_retrieve = (req, res, next) => {
         });
         }
 
-        exports.remove_volunteer = function(req, res, next) {
+exports.remove_volunteer = function(req, res, next) {
             volunteer.Removeone({_id: req.params.userId})
             .exec()
             .then(result => {

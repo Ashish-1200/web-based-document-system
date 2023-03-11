@@ -79,6 +79,8 @@ exports.update_incident_report = function(req, res, next) {
     return res.send('Cannot update incident report');
     });
     };
+    
+    
 
 exports.incidentreport_delete_one = function(req, res, next) {
   IncidentReport.deleteOne({ _id: req.params.incidentReportID })

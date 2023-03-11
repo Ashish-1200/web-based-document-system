@@ -36,7 +36,7 @@ app.use(express.json());
 app.use('/images', express.static('images'));
 app.use('/uploads',express.static('uploads'));
 
-//Importing Schema models
+/* //Importing Schema models
 const users = require("./models/users.m");
 const admin = require("./models/admin.m");
 const equipmentinventory = require("./models/equipmentinventory.m");
@@ -47,34 +47,34 @@ const insurancereports = require("./models/insurancereports.m");
 const intendedprojects = require("./models/intendedprojects.m");
 const policies = require("./models/policies.m");
 const public = require("./models/public.m");
-const volunteer = require("./models/volunteer.m");
+const volunteer = require("./models/volunteer.m"); */
 
 
 
 //Routes
-/*const d_users = require('./Routes/users');
-const d_admin = require('./Routes/admin');
-const d_equipmentinventory = require('./Routes/equipmentinventory');
-const d_event = require('./Routes/event');
-const d_financialreport = require('./Routes/financialreport');
-const d_incidentreport = require('./Routes/incidentreport');
-const d_insurancereports = require('./Routes/insurancereports');
-const d_intendedprojects = require('./Routes/intendedprojects');
-const d_policies = require('./Routes/policies');
-const d_public = require('./Routes/public');
-const d_volunteer = require('./Routes/volunteer');     */
+const wbusers = require('./Routes/users');
+const wbadmin = require('./Routes/admin');
+const wbequipmentinventory = require('./Routes/equipmentinventory');
+const wbevent = require('./Routes/event');
+const wbfinancialreports = require('./Routes/financialreport');
+const wbincidentreports = require('./Routes/incidentreport');
+const wbinsurancereports = require('./Routes/insurancereports');
+const wbintendedprojects = require('./Routes/intendedprojects');
+const wbpolicies = require('./Routes/policies');
+const wbpublic = require('./Routes/public');
+const wbvolunteer = require('./Routes/volunteer');     
 
-app.use('/users', users);
-app.use('/admin', admin);
-app.use('/equipmentinventory', equipmentinventory);
-app.use('/event', event);
-app.use('/financialreport', financialreports);
-app.use('/incidentreport', incidentreports);
-app.use('/insurancereports', insurancereports);
-app.use('/intendedprojects', intendedprojects);
-app.use('/policies', policies);
-app.use('/public', public);
-app.use('/volunteer', volunteer);
+app.use('/users', wbusers);
+app.use('/admin', wbadmin);
+app.use('/equipmentinventory', wbequipmentinventory);
+app.use('/event', wbevent);
+app.use('/financialreport', wbfinancialreports);
+app.use('/incidentreport', wbincidentreports);
+app.use('/insurancereports', wbinsurancereports);
+app.use('/intendedprojects', wbintendedprojects);
+app.use('/policies', wbpolicies);
+app.use('/public', wbpublic);
+app.use('/volunteer', wbvolunteer);
 
 
 //request is made to a route that does not exist

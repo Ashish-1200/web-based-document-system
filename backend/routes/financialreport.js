@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const multer = require('multer');
 const FinancialReportController = require('../controllers/Financialreports');
-const financialReport = require('../model/financialreports.m');
+//const financialReport = require('../model/financialreports.m');
 
 const storage = multer.diskStorage({
   destination: function(req, file, cb) {
@@ -12,6 +12,7 @@ const storage = multer.diskStorage({
     cb(null, file.originalname);
   }
 });
+
 
 const fileFilter = function(req, file, cb) {
   if (file.mimetype === 'application/pdf') {
@@ -29,10 +30,10 @@ const upload = multer({
   fileFilter: fileFilter
 });
 
-router.get('/', FinancialReportController.getAllFinancialReports);
+router.get('/list', FinancialReportController.getAllFinancialReports);
 router.get('/:id', FinancialReportController.getSingleFinancialReport);
-router.post('/', upload.single('financialReport'), FinancialReportController.createFinancialReport);
-router.patch('/:id', upload.single('financialReport'), FinancialReportController.updateFinancialReport);
-router.delete('/:id', FinancialReportController.deleteFinancialReport);
+router.post('/create', upload.single('financialReport'), FinancialReportController.createFinancialReport);
+router.patch('/:updateuser', upload.single('financialReport'), FinancialReportController.updateFinancialReport);
+router.delete('/:financialreportid', FinancialReportController.deleteFinancialReport);
 
 module.exports = router

@@ -2,8 +2,8 @@ const express = require('express');
 const router = express.Router();
 const multer = require('multer');
 const mongoose = require('mongoose')
-const InsuranceController = require('../controllers/insurance');
-const d_insurancereports = require('../models/insurancereport');
+const InsuranceController = require('../controllers/Insurancereports');
+//const d_insurancereports = require('../models/insurancereport');
 
 // Multer middleware for file upload
 const storage = multer.diskStorage({
@@ -30,18 +30,18 @@ const upload = multer({
 });
 
 // Get all insurance reports
-router.get('/', InsuranceController.getInsuranceReports);
+router.get('/list', InsuranceController.getInsuranceReports);
 
 // Create a new insurance report
-router.post('/', upload.single('file'), InsuranceController.createInsuranceReport);
+router.post('/create', upload.single('file'), InsuranceController.createInsuranceReport);
 
 // Get a specific insurance report by ID
-router.get('/:id', InsuranceController.getInsuranceReportById);
+router.get('/:id', InsuranceController.getInsuranceReport);
 
 // Update an existing insurance report by ID
-router.put('/:id', upload.single('file'), InsuranceController.updateInsuranceReport);
+router.put('/:updateuser', upload.single('file'), InsuranceController.updateInsuranceReport);
 
 // Delete an insurance report by ID
-router.delete('/:id', InsuranceController.deleteInsuranceReport);
+router.delete('/:insurancereportsid', InsuranceController.deleteInsuranceReport);
 
 module.exports = router

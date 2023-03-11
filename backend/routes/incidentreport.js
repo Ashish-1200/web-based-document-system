@@ -3,7 +3,7 @@ const router = express.Router();
 const multer = require('multer');
 
 const IncidentReportController = require('../controllers/Incidentreport');
-const incidentreport = require('../models/incidentreport.m');
+const incidentreport = require('../models/incidentreports.m');
 
 // Set up multer storage for file uploads
 const storage = multer.diskStorage({
@@ -34,12 +34,11 @@ const upload = multer({
 });
 
 // Define routes for incident reports
-router.get('/', IncidentReportController.getAllReports);                 //Get incident reports
-router.post('/', upload.array('images', 5), IncidentReportController.createReport);  //New document in the collection
-router.get('/:reportId', IncidentReportController.getReportById);
-router.put('/:reportId', IncidentReportController.updateReport);
-router.delete('/:reportId', IncidentReportController.deleteReport);    // Delete reports
-//Creating  a new document within the collection
-router.post('/create',IncidentReportController.createReport);
+router.get('/list', IncidentReportController.incidentreport_list);                 //Get incident reports
+router.post('/create', upload.array('images', 5), IncidentReportController.create_incident_report);  //New document in the collection
+router.get('/:id', IncidentReportController.get_single_incident_report);
+router.put('/:updateuser', IncidentReportController.update_incident_report);
+router.delete('/:incidentreportid', IncidentReportController.incidentreport_delete_one);    // Delete reports
 
-module.exports = router;
+
+module.exports = router

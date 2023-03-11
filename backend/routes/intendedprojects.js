@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const IntendedProjectController = require('../controller/intended_projects');
+const IntendedProjectController = require('../controllers/Intendedprojects');
 const multer = require('multer');
-const IncidentReport = require('../models/intendedprojects.m');
+//const Intendedprojects = require('../models/intendedprojects.m');
 
 // Set up multer middleware for file uploads
 const storage = multer.diskStorage({
@@ -34,15 +34,15 @@ const upload = multer({
 router.get('/', IntendedProjectController.getIntendedProjects);
 
 // Get a specific intended project by ID
-router.get('/:id', IntendedProjectController.getIntendedProjectById);
+router.get('/:id', IntendedProjectController.getIntendedProject);
 
 // Create a new intended project
-router.post('/', upload.single('image'), IntendedProjectController.createIntendedProject);
+router.post('/create', upload.single('image'), IntendedProjectController.createIntendedProject);
 
 // Update an intended project by ID
-router.put('/:id', IntendedProjectController.updateIntendedProjectById);
+router.put('/:id', IntendedProjectController.updateIntendedProject);
 
 // Delete an intended project by ID
-router.delete('/:id', IntendedProjectController.deleteIntendedProjectById);
+router.delete('/:id', IntendedProjectController.deleteIntendedProject);
 
-module.exports = router;
+module.exports = router

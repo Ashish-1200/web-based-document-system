@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const multer = require('multer');
-const PoliciesController = require('../controller/policies');
-const policies = require('../model/policies.m');
+const PoliciesController = require('../controllers/Policies');
+const policies = require('../models/policies.m');
 
 const storage = multer.diskStorage({
   destination: function(req, file, cb) {
@@ -29,10 +29,10 @@ const upload = multer({
   fileFilter: fileFilter
 });
 
-router.get('/', PoliciesController.getAllPolicies);
+router.get('/list', PoliciesController.getAllPolicies);
 router.get('/:id', PoliciesController.getPolicy);
-router.post('/', upload.single('policiesDocument'), PoliciesController.createPolicy);
-router.patch('/:id', upload.single('policiesDocument'), PoliciesController.updatePolicy);
-router.delete('/:id', PoliciesController.deletePolicy);
+router.post('/create', upload.single('policiesDocument'), PoliciesController.createPolicy);
+router.patch('/:updateuser', upload.single('policiesDocument'), PoliciesController.updatePolicy);
+router.delete('/:policiesid', PoliciesController.deletePolicy);
 
 module.exports = router
