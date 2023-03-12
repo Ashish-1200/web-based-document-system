@@ -9,7 +9,7 @@ const usersSchema= new mongoose.Schema({
         unique: true,
         required:true,
     },
-    Userclass: {
+    UserType: {
         type: String,
 
     },
