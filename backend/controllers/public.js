@@ -2,12 +2,12 @@ const mongoose = require ('mongoose')
 const  public= require('../models/public.m')
 
 exports.getPublicList = function(req, res, next) {
-    public.find(function(err, publicList){
-    if(err) {
-    res.send(err);
+    public.find(function(error, publicres){
+    if(error) {
+    res.send(error);
     } else {
     res.status(200).json,
-    res.send({ TotalUsers: publicList.length, PublicUsers: publicList });
+    res.send({ TotalUsers: publicres.length, PublicUsers: publicres });
     }
     });
     };

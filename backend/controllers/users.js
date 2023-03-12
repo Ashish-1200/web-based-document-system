@@ -5,11 +5,11 @@ const jwt = require('jsonwebtoken')
 
 exports.users_get = function(req, res, next)     // Users to be displayed.
 {
-    User_model.find(function(err, usersresponse){
+    User_model.find(function(err, usersres){
       if(err)
       res.send(err);
       else
-      res.send(usersresponse);
+      res.send(usersres);
     })
 }
 
@@ -63,7 +63,7 @@ exports.users_signup = function(req,res,next)   //Sign up post request.
             const newUsers = new User_model({
                  _id: mongoose.Types.ObjectId(),
                 Username:req.body.Username,
-                Userclass:req.body.Userclass,
+                UserType:req.body.UserType,
                 Firstname:req.body.Firstname,
                 Lastname:req.body.Lastname,
                 Agencytype:req.body.Agencytype,
@@ -91,7 +91,7 @@ exports.users_signup = function(req,res,next)   //Sign up post request.
 }
 
 exports.users_login = (req,res,next)=>{
-    User_model.find({Username: req.body.Username,Userclass:req.body.Userclass})
+    User_model.find({Username: req.body.Username,UserType:req.body.UserType})
 
     .exec()
     .then(user=>{
@@ -113,7 +113,7 @@ exports.users_login = (req,res,next)=>{
                {
                     Username: user[0].Username,
                     _id:user[0]._id,
-                    Userclass:user[0].Userclass,
+                    UsercType:user[0].UserType,
                     Firstname:user[0].Firstname,
                     Lastname:user[0].Lastname
                 },
@@ -145,7 +145,7 @@ exports.users_login = (req,res,next)=>{
 exports.update_user = function(req,res,next)
 {
     const id = req.params.updateUser;
-    User_model.updateOne({_id: id},{$set:{Username:req.body.Username,Userclass:req.body.Userclass,Firstname:req.body.Firstname,Lastname:req.body.Lastname,Email:req.body.Email,Password:req.body.Password,Requestedrole:req.body.Requestedrole}})
+    User_model.updateOne({_id: id},{$set:{Username:req.body.Username,UserType:req.body.UserType,Firstname:req.body.Firstname,Lastname:req.body.Lastname,Email:req.body.Email,Password:req.body.Password,Requestedrole:req.body.Requestedrole}})
     .exec()
     .then(function(dbuser)
       {

@@ -32,8 +32,7 @@ exports.create_incident_report = function(req, res, next) {
     address: req.body.address,
     dateOfIncident: req.body.dateOfIncident,
     location: req.body.location,
-    description: req.body.description,
-    uploadPhoto: req.files.map(uploadPhoto => uploadPhoto.path)
+    description: req.body.description
   });
 
   incidentReport

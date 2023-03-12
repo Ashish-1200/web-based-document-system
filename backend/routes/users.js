@@ -4,7 +4,8 @@ const mongoose = require('mongoose');
 const d_users = require('../models/users.m');
 const authcheck = require('../middleware/authcheck');
 const UsersController = require('../controllers/Users');
-
+const jwt = require('jsonwebtoken')
+const checkAuth = require ('../middleware/authcheck')
 
 
 
@@ -21,9 +22,7 @@ router.post('/signup',UsersController.users_signup);
 router.post('/login',UsersController.users_login)
 
 
-router.put('/:id', UsersController.update_user);
-
-router.delete('/:id', authcheck, UsersController.delete_user);
+router.put('/:updateUser', UsersController.update_user);
 
 
 

@@ -14,6 +14,6 @@ router.post('/create', PublicController.createPublic);
 router.get('/:id', PublicController.getOnePublic);
 
 // Delete a public user
-router.delete('/:publicId', PublicController.deletePublic);
+router.delete('/:userId', PublicController.deletePublic);
 
 module.exports = router

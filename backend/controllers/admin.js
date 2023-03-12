@@ -7,15 +7,13 @@ const mongoose = require ('mongoose')
 exports.get_all_admins = function(req, res, next) {
 admin_m.find(function(error, admins){
 if(error) {
-res.send(error);
-} else {
-res.status(200).json({
-TotalAdmins: admins.length,
-AdminDetails: admins
-});
-}
-});
-};
+    if(err)
+    res.send(err);
+    else
+    res.status(200).json,
+    res.send({ Count: admins.length, AdminUsers: admins});
+}})};
+
 
 exports.createAdmin = function(req, res, next) {
 const newAdmin = new admin_m({
@@ -52,27 +50,7 @@ res.send("Admin not found");
 
 
 
-exports.admin_put_update = function(req, res, next) {
-    const id = req.params.id;
-    const updateOps = {};
-    for (const ops of req.body) {
-        updateOps[ops.propName] = ops.value;
-    }
-    admin_m.update({ _id: id }, { $set: updateOps })
-        .exec()
-        .then(result => {
-            console.log(result);
-            res.status(200).json({
-                message: "Admin updated"
-            });
-        })
-        .catch(error => {
-            console.log(error);
-            res.status(500).json({
-                error: error
-            });
-        });
-};
+
 
 
 
