@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { MainpageComponent } from './mainpage/mainpage/mainpage.component';
 import { SignupComponent } from './signup/signup.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule,  } from '@angular/common/http';
 
 
 import {MatSnackBarModule} from '@angular/material/snack-bar';
@@ -29,6 +29,8 @@ import { InsurancereportsComponent } from './insurancereports/insurancereports.c
 import { IntendedprojectsComponent } from './intendedprojects/intendedprojects.component';
 import { PoliciesComponent } from './policies/policies.component';
 import { IncidentreportsComponent } from './incidentreports/incidentreports.component';
+import { UserupdateComponent } from './userupdate/userupdate.component';
+import { CreateuserComponent } from './createuser/createuser.component';
 
 
 
@@ -46,7 +48,9 @@ import { IncidentreportsComponent } from './incidentreports/incidentreports.comp
     FinincialreportsComponent,
     InsurancereportsComponent,
     IntendedprojectsComponent,
-    PoliciesComponent
+    PoliciesComponent,
+    UserupdateComponent,
+    CreateuserComponent
     
     
     
@@ -63,6 +67,8 @@ import { IncidentreportsComponent } from './incidentreports/incidentreports.comp
     MatFormFieldModule,
   HttpClientModule,
   MatPaginatorModule
+  
+
   
   ],
   providers: [LoginService, SignupService, UsersService],
