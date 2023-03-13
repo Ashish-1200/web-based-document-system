@@ -29,10 +29,15 @@ required: true,
 },
 
 eventDate: {
-type: Date,
+type: String,
 required: true,
 },
 
-});
+uploadDocument: {
+    type: [String]
+    }
+    });
+
+
 
 module.exports = mongoose.model("event", eventSchema);

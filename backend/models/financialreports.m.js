@@ -52,6 +52,10 @@ TotalExpenditure: {
 type: Number,
 required: true,
 },
+
+uploadDocument: {
+    type: [String]
+    }
 });
 
 module.exports = mongoose.model("financialreports", financialreportsSchema)

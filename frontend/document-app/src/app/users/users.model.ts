@@ -1,7 +1,7 @@
 export interface users {
     _id:string;
     Username:string;
-    Usertype:string;
+    UserType:string;
     Firstname:string;
     Lastname:string;
     Password:string;

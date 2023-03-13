@@ -30,7 +30,6 @@ import { IntendedprojectsComponent } from './intendedprojects/intendedprojects.c
 import { PoliciesComponent } from './policies/policies.component';
 import { IncidentreportsComponent } from './incidentreports/incidentreports.component';
 import { UserupdateComponent } from './userupdate/userupdate.component';
-import { CreateuserComponent } from './createuser/createuser.component';
 
 
 
@@ -49,8 +48,7 @@ import { CreateuserComponent } from './createuser/createuser.component';
     InsurancereportsComponent,
     IntendedprojectsComponent,
     PoliciesComponent,
-    UserupdateComponent,
-    CreateuserComponent
+    UserupdateComponent
     
     
     

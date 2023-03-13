@@ -37,6 +37,9 @@ Period: {
 type: String,
 required: true,
 },
+uploadDocument: {
+    type: [String]
+    }
 });
 
 module.exports = mongoose.model("policies", policiesSchema);

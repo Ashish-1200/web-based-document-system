@@ -5,6 +5,7 @@ const cors = require ('cors');
 const path = require ('path');
 mongoose.set('strictQuery', false );
 const app = express();
+const multer = require('multer');
 
 //app.listen(3000,(error)=>console.log(error));
 
@@ -27,9 +28,17 @@ mongoose.connect('mongodb://localhost:27017/docsystem')
 .then(() => console.log("Database is connected"))
 .catch((error) => console.log(error));
 
-//app.use(bodyParser.json()); 
-// allow application to use json data
-app.use(express.json()); 
+//Configure multer to store files in the "uploads" directory
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, 'uploads/');
+  },
+  filename: (req, file, cb) => {
+    cb(null, Date.now() + '-' + file.originalname);
+  },
+});
+const upload = multer({ storage });
+
 
 
 //serve the static files located in the "images" and "uploads" directories

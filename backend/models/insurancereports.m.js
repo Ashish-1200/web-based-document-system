@@ -32,7 +32,14 @@ default: () => Date.now()
 insuranceDate: {
 type: Date,
 default: () => Date.now()
-}
+},
+
+
+uploadDocument: {
+    type: [String]
+    }
 });
+
+
 
 module.exports = mongoose.model("insurancereports", insurancereportsSchema);

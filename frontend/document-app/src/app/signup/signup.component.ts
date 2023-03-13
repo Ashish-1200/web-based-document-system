@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { SignupService } from './signup.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
@@ -13,17 +13,22 @@ export class SignupComponent implements OnInit {
 
   isLoading = false;
   hide = true;
+  constructor(public signupService:SignupService, private _snackBar: MatSnackBar) {}
+  
+  ngOnInit(): void {
+    throw new Error('Method not implemented.');
+  }
+
   form = new FormGroup({
     Username: new FormControl('', Validators.required, this.signupService.validateUsernameNotTaken.bind(this.signupService)),
     Firstname: new FormControl('', Validators.required),
     Lastname: new FormControl('', Validators.required),
     Email: new FormControl('', Validators.required, this.signupService.validateEmailNotTaken.bind(this.signupService)),
     Password: new FormControl('', [Validators.required, Validators.minLength(8)]),
-    Requestedrole: new FormControl('', Validators.required)
+    UserType: new FormControl('', [Validators.required])
   });
 
-  constructor(public signupService: SignupService, private http: HttpClient) {}
-
+  
   SaveData() {
     if (this.form.invalid) return;
 
@@ -32,9 +37,19 @@ export class SignupComponent implements OnInit {
         this.form.reset({});
         console.log(result);
       });
+
+      this._snackBar.open('Registration Successful','',{
+        verticalPosition:'top',
+       // horizontalPosition:'center',
+        panelClass:'edit'
+      })
+    }
+    
   }
+  
 
-  ngOnInit() {}
+  
 
-}
+
+
 

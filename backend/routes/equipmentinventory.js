@@ -2,8 +2,9 @@ const express = require('express')
 const router = express.Router()
 const mongoose = require('mongoose')
 const EquipmentInventoryController = require('../controllers/Equipmentinventory')
-const EquipmentInventory = require('../models/equipmentinventory.m')
+//const EquipmentInventory = require('../models/equipmentinventory.m')
 const multer = require('multer')
+const checkAuth= require('../middleware/authcheck')
 
 // Multer middleware configuration
 const storage = multer.diskStorage({
@@ -15,22 +16,45 @@ const storage = multer.diskStorage({
   }
 })
 
+// Check if uploaded file is a PDF
 const fileFilter = (req, file, cb) => {
-  // Reject a file
-  if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
-    cb(null, true)
+  if (file.mimetype === 'application/pdf') {
+    cb(null, true);
   } else {
-    cb(null, false)
+    cb(new Error('Invalid file type, only PDF files are allowed!'), false);
   }
-}
+};
 
+// Set up multer middleware
 const upload = multer({
   storage: storage,
+  fileFilter: fileFilter,
   limits: {
-    fileSize: 1024 * 1024 * 5
-  },
-  fileFilter: fileFilter
-})
+    fileSize: 1024 * 1024 * 5 // Limit file size to 5 MB
+  }
+});
+
+// Handle POST request to upload PDF document
+router.post('/upload', upload.single('pdfDocument'), (req, res, next) => {
+  // Check if file was uploaded successfully
+  if (!req.file) {
+    const error = new Error('No PDF file was provided!');
+    error.statusCode = 422;
+    throw error; }
+
+  
+
+  // Save file information to database
+  const pdfDocument = {
+    path: req.file.path,
+    title: req.body.title,
+    description: req.body.description
+  };
+  // save pdfDocument to the database
+  res.status(201).json({ message: 'PDF file was uploaded successfully!', pdfDocument: pdfDocument });
+});
+
+
 
 // Get list of equipment
 router.get('/list', EquipmentInventoryController.equipmentInventory_list)
@@ -39,12 +63,12 @@ router.get('/list', EquipmentInventoryController.equipmentInventory_list)
 router.get('/:id', EquipmentInventoryController.equipmentInventory_get_one)
 
 // Create a new equipment
-router.post('/create', upload.single('equipmentImage'), EquipmentInventoryController.equipmentInventory_create)
+router.post('/create', EquipmentInventoryController.equipmentInventory_create)
 
 // Update an existing equipment
-router.put('/:id', EquipmentInventoryController.equipmentInventory_update)
+router.put('/:updateUser', EquipmentInventoryController.equipmentInventory_update)
 
 // Delete an equipment
-router.delete('/:id', EquipmentInventoryController.equipmentInventory_delete_one)
+router.delete('/:id', checkAuth, EquipmentInventoryController.equipmentInventory_delete_one)
 
-module.exports = router
+module.exports = router;

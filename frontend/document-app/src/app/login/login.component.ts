@@ -2,20 +2,22 @@
 import { Component, OnInit } from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {LoginService} from "./login.service";
-import { Router } from '@angular/router';
+
+import { MatSnackBar } from '@angular/material/snack-bar';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  isLoading: boolean = false;
+  constructor( public loginService:LoginService , private _snackBar:MatSnackBar) { }
+  
+
+  isLoading = false;
   router: any;
   
-  constructor( public loginService:LoginService ) { }
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
-  }
+  
   
 
   onLogin(form: NgForm) {
@@ -23,8 +25,17 @@ export class LoginComponent implements OnInit {
       alert("Invalid Login!");
       return;
     }
-    this.router.navigate(['/homepage']);
-  
-  }
+    this.loginService.loginUser(form.value.Username,form.value.Password,form.value.UserType);
+    this.loginService.updatemenu.next();
+  //Prompted Error Message
+  this._snackBar.open('Invalid!','',{
+    verticalPosition:'top',
+   // horizontalPosition:'center',
+    panelClass:'edit'
+  })
 
+  }
+  ngOnInit(): void {
+    throw new Error('Method not implemented.');
+  }
 }

@@ -44,7 +44,7 @@ type: String,
 required: true
 },
 
-uploadPhoto: {
+uploadDocument: {
 type: [String]
 }
 });

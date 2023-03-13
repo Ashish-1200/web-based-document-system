@@ -13,9 +13,7 @@ const usersSchema= new mongoose.Schema({
         type: String,
 
     },
-    Agencytype:{
-      type:String,
-    },
+    
     Firstname: {
         type:String,
         required:true,

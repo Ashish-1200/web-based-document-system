@@ -8,7 +8,7 @@ import { HomepageComponent } from './homepage/homepage.component';
 
 
 const routes: Routes = [
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: '', redirectTo: '/mainpage', pathMatch: 'full' },
  {path:'signup',component:SignupComponent},
  {path:'login',component:LoginComponent},
  {path:"map",component:MainpageComponent},

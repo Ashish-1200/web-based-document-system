@@ -6,6 +6,8 @@ const PublicSchema= new mongoose.Schema({
         type: mongoose.SchemaTypes.ObjectId,
         ref:"users"
     }
+   
 })
 
 module.exports= mongoose.model("public",PublicSchema)
+

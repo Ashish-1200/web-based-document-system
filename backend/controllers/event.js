@@ -1,5 +1,5 @@
 const mongoose = require ('mongoose')
-const event = require('../models/event.m')
+const EventModel = require('../models/event.m')
 
 exports.getEventList = function(req, res, next) {
 EventModel.find(function(error, eventList) {
@@ -15,7 +15,7 @@ exports.createEvent = (req, res, next) => {
 const newEvent = new EventModel({
 _id: mongoose.Types.ObjectId(),
 eventName: req.body.eventName,
-eventDescription: req.body.eventDescription,
+eventDes: req.body.eventDes,
 eventDate: req.body.eventDate
 });
 
@@ -58,3 +58,28 @@ error: error
 });
 });
 }
+
+exports.updateEvent = function(req, res, next) {
+    const id = req.params.updateIncidentReport;
+    IncidentReport.updateOne(
+    { _id: id },
+    {
+    $set: {
+        adminID:req.body.adminID,
+        volunteerID:req.body.volunteerID,
+        publicID:req.body.publicID,
+        eventName:req.body.eventName,
+        eventDes:req.body.eventDes,
+        eventDate:req.body.eventDate
+    }
+    }
+    )
+    .exec()
+    .then(function(incidentReport) {
+    return res.send(incidentReport);
+    })
+    .catch(function(err) {
+    return res.send('Cannot update incident report');
+    });
+    };
+    
