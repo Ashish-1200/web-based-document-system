@@ -10,10 +10,10 @@ import { Subject } from "rxjs";
 
 
 export class LoginService {
-  private token: any;
+  
   private authStatusListener = new Subject<boolean>();
-
-  isAuthenticated: boolean | undefined;
+  userIsAuthenticated=false;
+  
   tokenresp: any;
   private _updatemenu= new Subject<void>();
 
@@ -24,11 +24,11 @@ export class LoginService {
   get updatemenu(){
     return this._updatemenu;
   }
-
+  private token : any;
 
   loginUser(Username: string, Password: string, UserType : string) {
     const LoginData: loginData = { Username: Username, Password: Password, UserType: UserType }
-    this.http.post<{ token: string }>("http://localhost:3000/api/users/login", LoginData)
+    this.http.post<{ token: string }>("http://localhost:3000/users/login", LoginData)
       .subscribe(response => {
         const token = response.token;
         this.token = token;
@@ -73,6 +73,6 @@ export class LoginService {
     localStorage.setItem('Firstname', name);
     localStorage.setItem('Lastname', last);
     localStorage.setItem('UserType',role);
-    return this.tokenresp.Userclass;
+    return this.tokenresp.UserType;
   }
 }

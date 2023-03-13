@@ -15,9 +15,7 @@ export class SignupComponent implements OnInit {
   hide = true;
   constructor(public signupService:SignupService, private _snackBar: MatSnackBar) {}
   
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
-  }
+
 
   form = new FormGroup({
     Username: new FormControl('', Validators.required, this.signupService.validateUsernameNotTaken.bind(this.signupService)),
@@ -45,6 +43,10 @@ export class SignupComponent implements OnInit {
       })
     }
     
+    ngOnInit(): void {
+
+
+    }
   }
   
 

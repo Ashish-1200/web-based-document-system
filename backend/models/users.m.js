@@ -49,7 +49,7 @@ const usersSchema= new mongoose.Schema({
     },
 
     DateJoined: {
-        type: Date,
+        type: String,
         default: new Date(),
     } ,
 })

@@ -66,7 +66,6 @@ exports.users_signup = function(req,res,next)   //Sign up post request.
                 UserType:req.body.UserType,
                 Firstname:req.body.Firstname,
                 Lastname:req.body.Lastname,
-                Agencytype:req.body.Agencytype,
                 Password:hash,
                 Email:req.body.Email,
                 DateJoined:req.body.DateJoined

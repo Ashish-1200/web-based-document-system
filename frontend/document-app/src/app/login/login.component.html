@@ -8,8 +8,8 @@
       </div>
       <form (submit)="onLogin(loginForm)" #loginForm="ngForm" *ngIf="!isLoading">
         <div class="form-group">
-          <label for="userClass">Userclass</label>
-          <select class="form-control" id="userClass" name="userClass" ngModel required>
+          <label for="UserType">UserType</label>
+          <select class="form-control" id="UserType" name="UserType" ngModel required>
            <option value="Adminstrator">Adminstrator</option>
               <option value="Public">Public User</option>
               <option value="Volunteer">Volunteer User</option>
@@ -19,18 +19,21 @@
               <option value="MOW">MOW user</option>
               <option value="USMO">USMO User</option>
           </select>
-          <div class="invalid-feedback" *ngIf="loginForm.controls['userClass']?.invalid">Please enter a valid Userclass.</div>
+          <div class="invalid-feedback" *ngIf="loginForm.controls['UserType']?.invalid">Please enter a valid UserType.</div>
 
         </div>
         <div class="form-group">
           <label for="username">Username</label>
           <input class="form-control" id="username" name="username" ngModel type="text" placeholder="Username" required>
-          <div class="invalid-feedback" *ngIf="loginForm.controls['username'].invalid">Please enter a valid Username.</div>
+         
+          <div class="invalid-feedback" *ngIf="loginForm.controls && loginForm.controls['UserType'] && loginForm.controls['UserType'].invalid">Please enter a valid UserType.</div>
         </div>
         <div class="form-group">
           <label for="password">Password</label>
           <input class="form-control" id="password" name="password" ngModel type="password" placeholder="Password" required>
-          <div class="invalid-feedback" *ngIf="loginForm.controls['password'].invalid">Please enter a valid Password.</div>
+          <div class="invalid-feedback" *ngIf="loginForm.controls['password']?.invalid">Please enter a valid Password.</div>
+
+
         </div>
         <a routerLink="/homepage" class="btn btn-primary" type="submit">Login</a>
 

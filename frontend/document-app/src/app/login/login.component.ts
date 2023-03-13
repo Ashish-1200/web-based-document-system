@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
   
 
   isLoading = false;
-  router: any;
+ 
   
   
   
@@ -36,6 +36,6 @@ export class LoginComponent implements OnInit {
 
   }
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    
   }
 }
