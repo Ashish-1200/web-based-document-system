@@ -30,6 +30,7 @@ import { IntendedprojectsComponent } from './intendedprojects/intendedprojects.c
 import { PoliciesComponent } from './policies/policies.component';
 import { IncidentreportsComponent } from './incidentreports/incidentreports.component';
 import { UserupdateComponent } from './userupdate/userupdate.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 
@@ -48,7 +49,8 @@ import { UserupdateComponent } from './userupdate/userupdate.component';
     InsurancereportsComponent,
     IntendedprojectsComponent,
     PoliciesComponent,
-    UserupdateComponent
+    UserupdateComponent,
+    MainpageComponent
     
     
     
@@ -64,7 +66,8 @@ import { UserupdateComponent } from './userupdate/userupdate.component';
     MatIconModule,
     MatFormFieldModule,
   HttpClientModule,
-  MatPaginatorModule
+  MatPaginatorModule,
+  BrowserAnimationsModule
   
 
   
