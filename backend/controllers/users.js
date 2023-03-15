@@ -1,3 +1,4 @@
+
 const mongoose = require('mongoose')
 const User_model = require('../models/users.m')
 const bcrypt = require('bcrypt')
@@ -12,8 +13,7 @@ exports.users_get = function (req, res, next)     // Users to be displayed.
             res.send(usersres);
     })
 }
-
-exports.users_eachone = function (req, res, next) // Search each user by id
+exports.users_eachone = function (req, res,next) // Search each user by id
 {
     User_model.findOne({ _id: req.params.id })
 

@@ -34,6 +34,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,7 +54,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MainpageComponent
     
     
-    
   ],
   imports: [
     BrowserModule,
@@ -67,7 +67,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatFormFieldModule,
   HttpClientModule,
   MatPaginatorModule,
-  BrowserAnimationsModule
+  BrowserAnimationsModule,
+  
   
 
   

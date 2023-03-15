@@ -20,7 +20,7 @@ const morgan = require('morgan');
 app.use(morgan('dev'));
 
 //Cross-Origin Resource Sharing (CORS) middleware
-app.use(cors())
+app.use(cors());
 
 //Connection to database
 mongoose.Promise = global.Promise;
@@ -42,7 +42,7 @@ const upload = multer({ storage });
 
 
 //serve the static files located in the "images" and "uploads" directories
-app.use('/images', express.static('images'));
+
 app.use('/uploads',express.static('uploads'));
 
 /* //Importing Schema models
